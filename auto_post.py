@@ -98,8 +98,7 @@ def check_post():
                     print(f'It\'s time to post something...\nPOST:\nDescription: {p.description}\nPath: {p.path}\nDate: {p.date}')
                     print(p.path[len(p.path)-3:].lower())
                     if(p.path[len(p.path)-3:].lower()=='mp4'):
-                        delay = os.path.getsize(p.path)*0.000001*0.6
-                        upload_vid(username, password, p.path, p.description)
+                        upload_vid(username, password, p.path, p.description, p.title)
                     else:
                         upload(username, password, p.path, p.description)
 

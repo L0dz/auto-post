@@ -110,7 +110,7 @@ def setup(username, password):
 
 
 
-def upload_vid(username, password, path, desc):
+def upload_vid(username, password, path, desc, title):
     #setup
     setup(username, password)
 
@@ -140,9 +140,14 @@ def upload_vid(username, password, path, desc):
     while(driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/form/div/div[1]/label/div/div/div/div/div[2]').text != '100%'):
         time.sleep(1)
 
+    #set title
+    driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/form/div/div[2]/div[4]/div/div/input').send_keys(title)
+
     #set description
     driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/form/div/div[2]/div[5]/div/div/textarea').send_keys(desc)
 
     #publish
     driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/form/div/div[2]/div[9]/button').click()
+    time.sleep(10)
     driver.close()
+
